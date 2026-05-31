@@ -21,7 +21,7 @@ export default async function SearchContent({ query, currentPage }: SearchConten
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
       <h1 className="page-title mb-8 text-center">Search Movies</h1>
 
       <SearchBar defaultValue={query} />

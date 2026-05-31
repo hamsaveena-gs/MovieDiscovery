@@ -9,7 +9,7 @@ export default function FavouritesContent() {
   const { favourites } = useFavourites();
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
       <div className="flex items-center gap-3 mb-8">
         <Image src="/img/heart-red.png" alt="favourites" width={28} height={28} />
         <h1 className="page-title">My Favourites</h1>

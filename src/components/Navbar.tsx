@@ -31,7 +31,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800 text-white">
-        <div className="px-6 py-4 flex items-center justify-between gap-4">
+        <div className="px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
           <Link
             href="/"
             className="text-xl font-extrabold text-white tracking-tight shrink-0 hover:text-gray-300 transition-colors"
@@ -92,7 +92,7 @@ export default function Navbar() {
         </div>
 
         {searchOpen && pathname !== '/search' && (
-          <div className="md:hidden px-6 pb-4">
+          <div className="md:hidden px-4 sm:px-6 pb-4">
             <form onSubmit={handleSearch} className="flex gap-2">
               <input
                 type="text"
@@ -126,10 +126,12 @@ export default function Navbar() {
           <span className="text-lg font-extrabold text-white">Menu</span>
           <button
             onClick={() => setMenuOpen(false)}
-            className="btn-icon-light"
+            className="btn-icon-light relative w-8 h-8"
           >
-            <span className="block w-5 h-0.5 bg-black rotate-45 translate-y-px" />
-            <span className="block w-5 h-0.5 bg-black -rotate-45 -translate-y-px" />
+            <span className="absolute inset-0 flex items-center justify-center">
+              <span className="block w-5 h-0.5 bg-black rotate-45 absolute" />
+              <span className="block w-5 h-0.5 bg-black -rotate-45 absolute" />
+            </span>
           </button>
         </div>
 

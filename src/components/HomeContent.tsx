@@ -30,7 +30,7 @@ export default async function HomeContent({ page, genre, year, rating, sort }: H
   const totalPages = Math.min(moviesData.total_pages, 500);
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
       <Suspense>
         <FilterBar genres={genresData.genres} />
       </Suspense>

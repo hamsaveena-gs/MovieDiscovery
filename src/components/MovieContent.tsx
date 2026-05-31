@@ -35,7 +35,7 @@ export default async function MovieContent({ id }: MovieContentProps) {
         </div>
       )}
 
-      <div className={`max-w-5xl mx-auto px-6 py-8 relative z-10 ${details.backdrop_path ? '-mt-24' : 'mt-0'}`}>
+      <div className={`max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 relative z-10 ${details.backdrop_path ? '-mt-24' : 'mt-0'}`}>
         <div className="flex flex-col md:flex-row gap-8">
           <div className="relative w-48 h-72 shrink-0 rounded-xl overflow-hidden shadow-2xl shadow-black/60 mx-auto md:mx-0 border border-gray-700">
             {details.poster_path ? (

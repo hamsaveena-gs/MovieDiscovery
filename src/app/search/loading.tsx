@@ -2,7 +2,7 @@ import { MovieGridSkeleton } from '@/components/Skeletons';
 
 export default function SearchLoading() {
   return (
-    <div className="max-w-7xl mx-auto px-6 py-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
       <div className="h-9 w-56 bg-gray-800 rounded animate-pulse mx-auto mb-8" />
 
       <div className="flex gap-2 w-full max-w-2xl mx-auto mb-6">
