@@ -54,7 +54,7 @@ export default async function MovieContent({ id }: MovieContentProps) {
           </div>
 
           <div className="flex-1">
-            <h1 className="text-3xl font-extrabold text-white leading-tight">{details.title}</h1>
+            <h1 className="page-title leading-tight">{details.title}</h1>
             {details.tagline && (
               <p className="text-gray-400 italic mt-1 text-sm">{details.tagline}</p>
             )}
@@ -77,9 +77,7 @@ export default async function MovieContent({ id }: MovieContentProps) {
             {details.genres && (
               <div className="flex flex-wrap gap-2 mt-4">
                 {details.genres.map((genre) => (
-                  <span key={genre.id} className="px-3 py-1 border border-white/40 rounded-full text-xs text-white">
-                    {genre.name}
-                  </span>
+                  <span key={genre.id} className="badge-outline">{genre.name}</span>
                 ))}
               </div>
             )}

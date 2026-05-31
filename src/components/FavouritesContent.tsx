@@ -12,7 +12,7 @@ export default function FavouritesContent() {
     <div className="max-w-7xl mx-auto px-6 py-10">
       <div className="flex items-center gap-3 mb-8">
         <Image src="/img/heart-red.png" alt="favourites" width={28} height={28} />
-        <h1 className="text-3xl font-extrabold text-white">My Favourites</h1>
+        <h1 className="page-title">My Favourites</h1>
       </div>
 
       {favourites.length === 0 ? (

@@ -75,14 +75,14 @@ export default function Navbar() {
             {pathname !== '/search' && (
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="p-2 rounded-lg bg-white"
+                className="btn-icon-light"
               >
                 <Image src="/img/magnifying-glass.png" alt="search" width={18} height={18} />
               </button>
             )}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 rounded-lg bg-white flex flex-col gap-1"
+              className="btn-icon-light flex flex-col gap-1"
             >
               <span className={`block w-5 h-0.5 bg-black transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
               <span className={`block w-5 h-0.5 bg-black transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
@@ -126,7 +126,7 @@ export default function Navbar() {
           <span className="text-lg font-extrabold text-white">Menu</span>
           <button
             onClick={() => setMenuOpen(false)}
-            className="p-2 rounded-lg bg-white"
+            className="btn-icon-light"
           >
             <span className="block w-5 h-0.5 bg-black rotate-45 translate-y-px" />
             <span className="block w-5 h-0.5 bg-black -rotate-45 -translate-y-px" />

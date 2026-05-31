@@ -111,7 +111,7 @@ export default function FilterBar({ genres }: FilterBarProps) {
         {activeFilterCount > 0 && (
           <button
             onClick={clearFilters}
-            className="px-4 py-2.5 rounded-xl border border-gray-600 text-gray-400 text-sm hover:border-white hover:text-white transition-all"
+            className="btn btn-outline py-2.5"
           >
             Clear ({activeFilterCount})
           </button>
@@ -121,22 +121,16 @@ export default function FilterBar({ genres }: FilterBarProps) {
       {activeFilterCount > 0 && (
         <div className="flex flex-wrap gap-2 mt-3">
           {currentGenre && (
-            <span className="px-3 py-1 bg-gray-800 border border-gray-600 rounded-full text-xs text-white">
-              Genre applied
-            </span>
+            <span className="badge">Genre applied</span>
           )}
           {currentYear && (
-            <span className="px-3 py-1 bg-gray-800 border border-gray-600 rounded-full text-xs text-white">
-              Year: {currentYear}
-            </span>
+            <span className="badge">Year: {currentYear}</span>
           )}
           {currentRating && (
-            <span className="px-3 py-1 bg-gray-800 border border-gray-600 rounded-full text-xs text-white">
-              Rating: {currentRating}+
-            </span>
+            <span className="badge">Rating: {currentRating}+</span>
           )}
           {currentSort && (
-            <span className="px-3 py-1 bg-gray-800 border border-gray-600 rounded-full text-xs text-white">
+            <span className="badge">
               {SORT_OPTIONS.find(s => s.value === currentSort)?.label}
             </span>
           )}
