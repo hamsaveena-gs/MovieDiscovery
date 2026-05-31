@@ -1,7 +1,7 @@
 export function MovieCardSkeleton() {
   return (
     <div className="rounded-xl overflow-hidden bg-gray-900 border border-gray-800 animate-pulse shadow-lg">
-      <div className="aspect-[2/3] w-full bg-gray-800" />
+      <div className="aspect-2/3 w-full bg-gray-800" />
       <div className="p-3 space-y-2">
         <div className="h-4 bg-gray-800 rounded w-3/4" />
         <div className="flex items-center justify-between mt-1.5">
@@ -27,7 +27,7 @@ export function MovieDetailSkeleton() {
   return (
     <div className="min-h-screen animate-pulse">
       {/* Backdrop */}
-      <div className="w-full h-72 md:h-[420px] bg-gray-800" />
+      <div className="w-full h-72 md:h-420px bg-gray-800" />
 
       <div className="max-w-5xl mx-auto px-6 py-8 -mt-24 relative z-10">
         <div className="flex flex-col md:flex-row gap-8">

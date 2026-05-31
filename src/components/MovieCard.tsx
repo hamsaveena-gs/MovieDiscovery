@@ -29,7 +29,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
       href={`/movies/${movie.id}`}
       className="group relative block rounded-xl overflow-hidden bg-gray-900 border border-gray-800 hover:border-white/50 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-white/10"
     >
-      <div className="relative aspect-[2/3] w-full">
+      <div className="relative aspect-2/3 w-full">
         {movie.poster_path ? (
           <Image
             src={`${POSTER_URL}${movie.poster_path}`}
@@ -45,7 +45,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
           </div>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         <button
           onClick={handleFavourite}
