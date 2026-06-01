@@ -23,7 +23,7 @@ export default async function MovieContent({ id }: MovieContentProps) {
   return (
     <div className="min-h-screen">
       {details.backdrop_path && (
-        <div className="relative w-full h-72 md:h-[420px]">
+        <div className="relative w-full h-72 md:h-420px">
           <Image
             src={`${BACKDROP_URL}${details.backdrop_path}`}
             alt={details.title}
@@ -31,7 +31,7 @@ export default async function MovieContent({ id }: MovieContentProps) {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black via-black/60 to-transparent" />
         </div>
       )}
 
