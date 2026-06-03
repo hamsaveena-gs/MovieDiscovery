@@ -2,6 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import Button from '@/components/ui/Button';
+import Input from '@/components/ui/Input';
 
 interface SearchBarProps {
   defaultValue?: string;
@@ -20,19 +22,16 @@ export default function SearchBar({ defaultValue = '' }: SearchBarProps) {
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-2 w-full max-w-2xl mx-auto">
-      <input
+      <Input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search for movies..."
-        className="flex-1 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 border border-gray-700 focus:outline-none focus:border-white"
+        className="py-3 bg-gray-800 placeholder-gray-400"
       />
-      <button
-        type="submit"
-        className="px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-white transition-colors"
-      >
+      <Button type="submit" variant="primary" className="px-6 py-3">
         Search
-      </button>
+      </Button>
     </form>
   );
 }

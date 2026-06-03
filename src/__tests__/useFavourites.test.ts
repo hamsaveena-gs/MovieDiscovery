@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react';
-import { useFavourites } from '@/hooks/useFavourites';
-import { useFavouritesStore } from '@/store/favouritesStore';
+import { useFavourites } from '@/features/favourites/hooks/useFavourites';
+import { useFavouritesStore } from '@/features/favourites/store/favouritesStore';
 
 const mockMovie = {
   id: 1,
@@ -32,7 +32,6 @@ describe('useFavourites', () => {
   it('adds a movie to favourites', () => {
     const { result } = renderHook(() => useFavourites());
     act(() => {
-      useFavouritesStore.setState({ favourites: [] });
       result.current.addFavourite(mockMovie);
     });
     expect(useFavouritesStore.getState().favourites).toHaveLength(1);

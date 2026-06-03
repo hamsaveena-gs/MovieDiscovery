@@ -1,4 +1,4 @@
-import HomeContent from '@/components/HomeContent';
+import HomeContent from '@/features/home/pages/HomeContent';
 
 interface HomePageProps {
   searchParams: Promise<{

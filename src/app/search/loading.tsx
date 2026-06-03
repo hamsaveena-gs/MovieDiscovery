@@ -1,4 +1,4 @@
-import { MovieGridSkeleton } from '@/components/Skeletons';
+import MovieGridSkeleton from '@/components/skeletons/MovieGridSkeleton';
 
 export default function SearchLoading() {
   return (

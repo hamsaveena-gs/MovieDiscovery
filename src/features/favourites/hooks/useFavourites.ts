@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useMemo, useCallback } from 'react';
-import { useFavouritesStore } from '@/store/favouritesStore';
+import { useFavouritesStore } from '@/features/favourites/store/favouritesStore';
 import { Movie } from '@/types/movie';
 
 export function useFavourites() {

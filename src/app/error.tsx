@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Button from '@/components/ui/Button';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -20,9 +21,9 @@ export default function GlobalError({ error, reset }: ErrorProps) {
         We could not load the content. This may be a network issue or the API may be unavailable.
       </p>
       <div className="flex gap-4 mt-4">
-        <button onClick={reset} className="btn btn-primary">
+        <Button onClick={reset} variant="primary">
           Try Again
-        </button>
+        </Button>
         <Link href="/" className="btn btn-secondary">
           Go Home
         </Link>

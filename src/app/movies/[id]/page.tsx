@@ -1,4 +1,4 @@
-import MovieContent from '@/components/MovieContent';
+import MovieContent from '@/features/movie/pages/MovieContent';
 
 interface MoviePageProps {
   params: Promise<{ id: string }>;

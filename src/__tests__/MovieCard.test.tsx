@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import MovieCard from '@/components/MovieCard';
-import { useFavouritesStore } from '@/store/favouritesStore';
+import { useFavouritesStore } from '@/features/favourites/store/favouritesStore';
 
 jest.mock('next/navigation', () => ({
   useRouter: () => ({ push: jest.fn() }),
@@ -62,7 +62,7 @@ describe('MovieCard', () => {
 
   it('toggles favourite on heart button click', () => {
     render(<MovieCard movie={mockMovie} />);
-    const button = screen.getByRole('button');
+    const button = screen.getByRole('button', { name: 'favourite' });
     fireEvent.click(button);
     expect(useFavouritesStore.getState().favourites).toHaveLength(1);
     fireEvent.click(button);

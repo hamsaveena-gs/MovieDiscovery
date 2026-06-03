@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import { Movie } from '@/types/movie';
-import { useFavourites } from '@/hooks/useFavourites';
+import { useFavourites } from '@/features/favourites/hooks/useFavourites';
+import Button from '@/components/ui/Button';
 
 interface FavouriteButtonProps {
   movie: Movie;
@@ -21,7 +22,7 @@ export default function FavouriteButton({ movie }: FavouriteButtonProps) {
   };
 
   return (
-    <button onClick={handleClick} className="btn btn-primary flex items-center gap-2">
+    <Button variant="primary" onClick={handleClick} className="flex items-center gap-2">
       <Image
         src={favourited ? '/img/heart-red.png' : '/img/heart-cta.png'}
         alt="favourite"
@@ -29,6 +30,6 @@ export default function FavouriteButton({ movie }: FavouriteButtonProps) {
         height={20}
       />
       {favourited ? 'Remove from Favourites' : 'Add to Favourites'}
-    </button>
+    </Button>
   );
 }
