@@ -3,15 +3,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Movie } from '@/types/movie';
-import { useMovieCard } from '@/components/movie-card/useMovieCard';
+import { useMovieCard } from '@/hooks/useMovieCard';
 import MovieCardPoster from '@/components/movie-card/MovieCardPoster';
 import MovieCardInfo from '@/components/movie-card/MovieCardInfo';
 
-interface MovieCardProps {
-  movie: Movie;
-}
-
-export default function MovieCard({ movie }: MovieCardProps) {
+export default function MovieCard({ movie }: { movie: Movie }) {
   const { favourited, handleFavourite } = useMovieCard(movie);
 
   return (

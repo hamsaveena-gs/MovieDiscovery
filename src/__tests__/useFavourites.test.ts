@@ -1,8 +1,9 @@
 import { renderHook, act } from '@testing-library/react';
 import { useFavourites } from '@/features/favourites/hooks/useFavourites';
 import { useFavouritesStore } from '@/features/favourites/store/favouritesStore';
+import { Movie } from '@/types/movie';
 
-const mockMovie = {
+const mockMovie: Movie = {
   id: 1,
   title: 'Test Movie',
   overview: 'A test movie',
@@ -12,11 +13,6 @@ const mockMovie = {
   vote_average: 7.5,
   vote_count: 100,
   genre_ids: [28],
-  adult: false,
-  original_language: 'en',
-  original_title: 'Test Movie',
-  popularity: 100,
-  video: false,
 };
 
 beforeEach(() => {

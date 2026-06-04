@@ -1,7 +1,7 @@
 'use client';
 
 import Button from '@/components/ui/Button';
-import { usePagination } from '@/components/pagination/usePagination';
+import { usePagination } from '@/hooks/usePagination';
 import PaginationPages from '@/components/pagination/PaginationPages';
 
 interface PaginationProps {

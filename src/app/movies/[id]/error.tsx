@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import Link from 'next/link';
+import Button from '@/components/ui/Button';
+import ButtonLink from '@/components/ui/ButtonLink';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -20,12 +21,8 @@ export default function MovieError({ error, reset }: ErrorProps) {
         We could not load this movie. It may not exist or there was a network issue.
       </p>
       <div className="flex gap-4 mt-4">
-        <button onClick={reset} className="btn btn-primary">
-          Try Again
-        </button>
-        <Link href="/" className="btn btn-secondary">
-          Go Home
-        </Link>
+        <Button variant="primary" onClick={reset}>Try Again</Button>
+        <ButtonLink href="/" variant="secondary">Go Home</ButtonLink>
       </div>
     </div>
   );

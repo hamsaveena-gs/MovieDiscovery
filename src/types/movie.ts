@@ -17,8 +17,8 @@ export interface Genre {
 }
 
 export interface MovieDetails extends Movie {
-  runtime: number;
-  tagline: string;
+  runtime: number | null;
+  tagline: string | null;
   status: string;
   budget: number;
   revenue: number;

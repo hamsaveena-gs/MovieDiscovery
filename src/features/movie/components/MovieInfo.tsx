@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { MovieDetails } from '@/types/movie';
 import { POSTER_URL } from '@/lib/tmdb';
 import FavouriteButton from '@/features/movie/components/FavouriteButton';
+import NoPoster from '@/components/ui/NoPoster';
 
 interface MovieInfoProps {
   details: MovieDetails;
@@ -19,10 +20,7 @@ export default function MovieInfo({ details }: MovieInfoProps) {
             className="object-cover"
           />
         ) : (
-          <div className="w-full h-full bg-gray-800 flex flex-col items-center justify-center gap-2">
-            <Image src="/img/heart-white.png" alt="no poster" width={48} height={48} className="opacity-20" />
-            <span className="text-xs text-gray-500">No Poster</span>
-          </div>
+          <NoPoster size="lg" />
         )}
       </div>
 

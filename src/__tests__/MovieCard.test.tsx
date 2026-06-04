@@ -1,7 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import MovieCard from '@/components/MovieCard';
+import MovieCard from '@/components/movie-card/MovieCard';
 import { useFavouritesStore } from '@/features/favourites/store/favouritesStore';
+import { Movie } from '@/types/movie';
 
 jest.mock('next/navigation', () => ({
   useRouter: () => ({ push: jest.fn() }),
@@ -21,7 +22,7 @@ jest.mock('next/link', () => ({
   ),
 }));
 
-const mockMovie = {
+const mockMovie: Movie = {
   id: 42,
   title: 'Inception',
   overview: 'A dream within a dream',
@@ -31,11 +32,6 @@ const mockMovie = {
   vote_average: 8.8,
   vote_count: 30000,
   genre_ids: [28, 878],
-  adult: false,
-  original_language: 'en',
-  original_title: 'Inception',
-  popularity: 999,
-  video: false,
 };
 
 beforeEach(() => {

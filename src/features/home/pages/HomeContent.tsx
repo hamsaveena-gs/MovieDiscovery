@@ -1,6 +1,6 @@
 import { getTrendingMovies, getGenres, discoverMovies } from '@/lib/tmdb';
 import { Movie } from '@/types/movie';
-import Pagination from '@/components/Pagination';
+import Pagination from '@/components/pagination/Pagination';
 import FilterBar from '@/features/home/components/FilterBar';
 import TrendingSection from '@/features/home/components/TrendingSection';
 import MovieGrid from '@/features/home/components/MovieGrid';

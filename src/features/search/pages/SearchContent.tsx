@@ -1,6 +1,6 @@
 import { searchMovies } from '@/lib/tmdb';
 import { Movie } from '@/types/movie';
-import SearchBar from '@/components/SearchBar';
+import SearchBar from '@/components/ui/SearchBar';
 import SearchResults from '@/features/search/components/SearchResults';
 import SearchNoResults from '@/features/search/components/SearchNoResults';
 import SearchEmptyState from '@/features/search/components/SearchEmptyState';

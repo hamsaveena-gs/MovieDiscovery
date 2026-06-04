@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import MovieCard from '@/components/MovieCard';
-import Pagination from '@/components/Pagination';
+import MovieGrid from '@/components/ui/MovieGrid';
+import Pagination from '@/components/pagination/Pagination';
 import { Movie } from '@/types/movie';
 
 interface SearchResultsProps {
@@ -17,11 +17,7 @@ export default function SearchResults({ movies, query, currentPage, totalPages }
         Found <span className="text-white font-medium">{movies.length}</span> results for{' '}
         <span className="text-white font-medium">&ldquo;{query}&rdquo;</span>
       </p>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-4">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
+      <MovieGrid movies={movies} />
       <Suspense>
         <Pagination currentPage={currentPage} totalPages={totalPages} />
       </Suspense>

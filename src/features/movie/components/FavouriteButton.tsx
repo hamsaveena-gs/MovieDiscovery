@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { Movie } from '@/types/movie';
-import { useFavourites } from '@/features/favourites/hooks/useFavourites';
+import { useToggleFavourite } from '@/features/favourites/hooks/useToggleFavourite';
 import Button from '@/components/ui/Button';
 
 interface FavouriteButtonProps {
@@ -10,19 +10,10 @@ interface FavouriteButtonProps {
 }
 
 export default function FavouriteButton({ movie }: FavouriteButtonProps) {
-  const { addFavourite, removeFavourite, isFavourite } = useFavourites();
-  const favourited = isFavourite(movie.id);
-
-  const handleClick = () => {
-    if (favourited) {
-      removeFavourite(movie.id);
-    } else {
-      addFavourite(movie);
-    }
-  };
+  const { favourited, toggle } = useToggleFavourite(movie);
 
   return (
-    <Button variant="primary" onClick={handleClick} className="flex items-center gap-2">
+    <Button variant="primary" onClick={toggle} className="flex items-center gap-2">
       <Image
         src={favourited ? '/img/heart-red.png' : '/img/heart-cta.png'}
         alt="favourite"

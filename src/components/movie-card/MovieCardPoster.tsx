@@ -1,12 +1,9 @@
 import Image from 'next/image';
 import { Movie } from '@/types/movie';
 import { POSTER_URL } from '@/lib/tmdb';
+import NoPoster from '@/components/ui/NoPoster';
 
-interface MovieCardPosterProps {
-  movie: Movie;
-}
-
-export default function MovieCardPoster({ movie }: MovieCardPosterProps) {
+export default function MovieCardPoster({ movie }: { movie: Movie }) {
   return (
     <div className="relative aspect-2/3 w-full">
       {movie.poster_path ? (
@@ -18,13 +15,9 @@ export default function MovieCardPoster({ movie }: MovieCardPosterProps) {
           sizes="(max-width: 768px) 50vw, 25vw"
         />
       ) : (
-        <div className="w-full h-full flex flex-col items-center justify-center bg-gray-800 text-gray-500 gap-2">
-          <Image src="/img/heart-white.png" alt="no poster" width={36} height={36} className="opacity-20" />
-          <span className="text-xs text-gray-500">No Poster</span>
-        </div>
+        <NoPoster size="sm" />
       )}
-
-      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </div>
   );
 }

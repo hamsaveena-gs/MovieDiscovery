@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import ButtonLink from '@/components/ui/ButtonLink';
 
 export default function FavouritesEmptyState() {
   return (
@@ -7,7 +7,7 @@ export default function FavouritesEmptyState() {
       <Image src="/img/heart-white.png" alt="no favourites" width={64} height={64} className="opacity-20" />
       <p className="text-lg font-medium">No favourites yet</p>
       <p className="text-sm text-gray-600">Save movies you love and find them here</p>
-      <Link href="/" className="btn btn-primary mt-2">Browse Movies</Link>
+      <ButtonLink href="/" variant="primary" className="mt-2">Browse Movies</ButtonLink>
     </div>
   );
 }

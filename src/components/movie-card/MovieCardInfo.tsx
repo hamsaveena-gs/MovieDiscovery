@@ -1,11 +1,7 @@
 import Image from 'next/image';
 import { Movie } from '@/types/movie';
 
-interface MovieCardInfoProps {
-  movie: Movie;
-}
-
-export default function MovieCardInfo({ movie }: MovieCardInfoProps) {
+export default function MovieCardInfo({ movie }: { movie: Movie }) {
   return (
     <div className="p-3">
       <h3 className="font-semibold text-sm truncate text-white">{movie.title}</h3>

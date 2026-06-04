@@ -1,7 +1,7 @@
 export default function MovieDetailSkeletonHero() {
   return (
     <>
-      <div className="w-full h-72 md:h-420px bg-gray-800" />
+      <div className="w-full h-72 md:h-[420px] bg-gray-800" />
 
       <div className="max-w-5xl mx-auto px-6 py-8 -mt-24 relative z-10">
         <div className="flex flex-col md:flex-row gap-8">

@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import Link from 'next/link';
 import Button from '@/components/ui/Button';
+import ButtonLink from '@/components/ui/ButtonLink';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -24,9 +24,7 @@ export default function GlobalError({ error, reset }: ErrorProps) {
         <Button onClick={reset} variant="primary">
           Try Again
         </Button>
-        <Link href="/" className="btn btn-secondary">
-          Go Home
-        </Link>
+        <ButtonLink href="/" variant="secondary">Go Home</ButtonLink>
       </div>
     </div>
   );
