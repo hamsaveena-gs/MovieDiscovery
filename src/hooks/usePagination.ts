@@ -13,12 +13,11 @@ export function usePagination(currentPage: number, totalPages: number) {
     router.push(`${pathname}?${params.toString()}`);
   };
 
-  const getPages = (delta: number) => {
-    const start = Math.max(1, currentPage - delta);
-    const end = Math.min(totalPages, currentPage + delta);
+  const getPages = () => {
+    const end = Math.min(totalPages, currentPage + 2);
     const pages = [];
-    for (let i = start; i <= end; i++) pages.push(i);
-    return { pages, start, end };
+    for (let i = currentPage; i <= end; i++) pages.push(i);
+    return { pages, end };
   };
 
   return { goToPage, getPages };

@@ -12,24 +12,23 @@ jest.mock('next/navigation', () => ({
 beforeEach(() => mockPush.mockClear());
 
 describe('usePagination', () => {
-  it('getPages returns correct page range centered on currentPage', () => {
+  it('getPages returns forward window starting at currentPage', () => {
     const { result } = renderHook(() => usePagination(5, 10));
-    const { pages } = result.current.getPages(2);
-    expect(pages).toEqual([3, 4, 5, 6, 7]);
-  });
-
-  it('getPages clamps start at 1', () => {
-    const { result } = renderHook(() => usePagination(1, 10));
-    const { pages, start } = result.current.getPages(2);
-    expect(start).toBe(1);
-    expect(pages[0]).toBe(1);
+    const { pages } = result.current.getPages();
+    expect(pages).toEqual([5, 6, 7]);
   });
 
   it('getPages clamps end at totalPages', () => {
     const { result } = renderHook(() => usePagination(10, 10));
-    const { pages, end } = result.current.getPages(2);
+    const { pages, end } = result.current.getPages();
     expect(end).toBe(10);
-    expect(pages[pages.length - 1]).toBe(10);
+    expect(pages).toEqual([10]);
+  });
+
+  it('getPages returns 3 pages when room available', () => {
+    const { result } = renderHook(() => usePagination(1, 500));
+    const { pages } = result.current.getPages();
+    expect(pages).toEqual([1, 2, 3]);
   });
 
   it('goToPage pushes correct URL preserving existing params', () => {

@@ -11,12 +11,10 @@ describe('PaginationPages', () => {
     render(
       <PaginationPages
         pages={[3, 4, 5]}
-        rangeStart={3}
-        rangeEnd={5}
-        currentPage={4}
+        windowEnd={5}
+        currentPage={3}
         totalPages={10}
         goToPage={goToPage}
-        size="md"
       />
     );
     expect(screen.getByRole('button', { name: '3' })).toBeInTheDocument();
@@ -24,67 +22,58 @@ describe('PaginationPages', () => {
     expect(screen.getByRole('button', { name: '5' })).toBeInTheDocument();
   });
 
-  it('renders first page button when rangeStart > 1', () => {
+  it('renders last page button when windowEnd < totalPages', () => {
     render(
       <PaginationPages
         pages={[3, 4, 5]}
-        rangeStart={3}
-        rangeEnd={5}
-        currentPage={4}
+        windowEnd={5}
+        currentPage={3}
         totalPages={10}
         goToPage={goToPage}
-        size="md"
-      />
-    );
-    expect(screen.getByRole('button', { name: '1' })).toBeInTheDocument();
-  });
-
-  it('renders last page button when rangeEnd < totalPages', () => {
-    render(
-      <PaginationPages
-        pages={[3, 4, 5]}
-        rangeStart={3}
-        rangeEnd={5}
-        currentPage={4}
-        totalPages={10}
-        goToPage={goToPage}
-        size="md"
       />
     );
     expect(screen.getByRole('button', { name: '10' })).toBeInTheDocument();
+  });
+
+  it('does not render last page button when windowEnd equals totalPages', () => {
+    render(
+      <PaginationPages
+        pages={[8, 9, 10]}
+        windowEnd={10}
+        currentPage={8}
+        totalPages={10}
+        goToPage={goToPage}
+      />
+    );
+    const buttons = screen.getAllByRole('button');
+    const lastButtons = buttons.filter(b => b.textContent === '10');
+    expect(lastButtons.length).toBe(1);
   });
 
   it('calls goToPage with correct page number on click', () => {
     render(
       <PaginationPages
         pages={[1, 2, 3]}
-        rangeStart={1}
-        rangeEnd={3}
+        windowEnd={3}
         currentPage={1}
-        totalPages={5}
+        totalPages={10}
         goToPage={goToPage}
-        size="md"
       />
     );
     fireEvent.click(screen.getByRole('button', { name: '2' }));
     expect(goToPage).toHaveBeenCalledWith(2);
   });
 
-  it('does not render first page button when rangeStart is 1', () => {
-    render(
+  it('renders ellipsis when windowEnd is not adjacent to totalPages', () => {
+    const { container } = render(
       <PaginationPages
         pages={[1, 2, 3]}
-        rangeStart={1}
-        rangeEnd={3}
-        currentPage={2}
-        totalPages={3}
+        windowEnd={3}
+        currentPage={1}
+        totalPages={10}
         goToPage={goToPage}
-        size="md"
       />
     );
-    // Only one button with text "1" (the page button itself)
-    const buttons = screen.getAllByRole('button');
-    const firstPageExtra = buttons.filter(b => b.textContent === '1');
-    expect(firstPageExtra.length).toBe(1);
+    expect(container.textContent).toContain('…');
   });
 });
