@@ -2,7 +2,8 @@
 
 import { useEffect } from 'react';
 import Button from '@/components/ui/Button';
-import ButtonLink from '@/components/ui/ButtonLink';
+import Heading from '@/components/ui/Heading';
+import Text from '@/components/ui/Text';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -16,15 +17,13 @@ export default function GlobalError({ error, reset }: ErrorProps) {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-6 text-center gap-4">
-      <h2 className="error-heading">Something went wrong</h2>
-      <p className="text-gray-400 max-w-md">
+      <Heading variant="error">Something went wrong</Heading>
+      <Text variant="intro" className="max-w-md">
         We could not load the content. This may be a network issue or the API may be unavailable.
-      </p>
+      </Text>
       <div className="flex gap-4 mt-4">
-        <Button onClick={reset} variant="primary">
-          Try Again
-        </Button>
-        <ButtonLink href="/" variant="secondary">Go Home</ButtonLink>
+        <Button onClick={reset} variant="primary">Try Again</Button>
+        <Button href="/" variant="secondary">Go Home</Button>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ interface MovieBackdropProps {
 
 export default function MovieBackdrop({ backdropPath, title }: MovieBackdropProps) {
   return (
-    <div className="relative w-full h-72 md:h-[420px]">
+    <div className="img-backdrop">
       <Image
         src={`${BACKDROP_URL}${backdropPath}`}
         alt={title}

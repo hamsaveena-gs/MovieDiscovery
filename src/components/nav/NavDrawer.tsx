@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Button from '@/components/ui/Button';
+import Text from '@/components/ui/Text';
 
 interface NavLink {
   href: string;
@@ -33,12 +34,12 @@ export default function NavDrawer({ isOpen, onClose, navLinks }: NavDrawerProps)
         }`}
       >
         <div className="flex items-center justify-between px-6 py-5 border-b border-gray-800">
-          <span className="text-lg font-extrabold text-white">Menu</span>
+          <Text as="span" variant="label" className="text-lg">Menu</Text>
           <Button variant="icon-light" onClick={onClose} className="relative w-8 h-8">
-            <span className="absolute inset-0 flex items-center justify-center">
-              <span className="block w-5 h-0.5 bg-black rotate-45 absolute" />
-              <span className="block w-5 h-0.5 bg-black -rotate-45 absolute" />
-            </span>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="block w-5 h-0.5 bg-black rotate-45 absolute" />
+              <div className="block w-5 h-0.5 bg-black -rotate-45 absolute" />
+            </div>
           </Button>
         </div>
 

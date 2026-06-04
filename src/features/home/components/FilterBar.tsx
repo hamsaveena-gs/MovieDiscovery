@@ -5,6 +5,7 @@ import { useFilterBar } from '@/features/home/hooks/useFilterBar';
 import FilterSelect from '@/features/home/components/FilterSelect';
 import FilterBadges from '@/features/home/components/FilterBadges';
 import Button from '@/components/ui/Button';
+import Text from '@/components/ui/Text';
 
 interface FilterBarProps {
   genres: Genre[];
@@ -28,27 +29,31 @@ export default function FilterBar({ genres }: FilterBarProps) {
   return (
     <div className="mb-8">
       <div className="flex flex-wrap items-center gap-3">
-        <span className="text-gray-400 text-sm font-medium shrink-0">Filter:</span>
+        <Text variant="secondary" as="span" className="font-medium shrink-0">Filter:</Text>
 
         <FilterSelect
+          name="genre"
           value={currentGenre}
           placeholder="All Genres"
           options={genres.map((g) => ({ value: String(g.id), label: g.name }))}
           onChange={(val) => applyFilter('genre', val)}
         />
         <FilterSelect
+          name="year"
           value={currentYear}
           placeholder="All Years"
           options={YEARS.map((y) => ({ value: y, label: y }))}
           onChange={(val) => applyFilter('year', val)}
         />
         <FilterSelect
+          name="rating"
           value={currentRating}
           placeholder="All Ratings"
           options={RATINGS.map((r) => ({ value: r, label: `Rating ${r}+` }))}
           onChange={(val) => applyFilter('rating', val)}
         />
         <FilterSelect
+          name="sort"
           value={currentSort}
           placeholder="Sort By"
           options={SORT_OPTIONS}

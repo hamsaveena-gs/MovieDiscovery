@@ -1,3 +1,5 @@
+import Text from '@/components/ui/Text';
+
 interface FilterBadgesProps {
   currentGenre: string;
   currentYear: string;
@@ -9,10 +11,10 @@ interface FilterBadgesProps {
 export default function FilterBadges({ currentGenre, currentYear, currentRating, currentSort, sortLabel }: FilterBadgesProps) {
   return (
     <div className="flex flex-wrap gap-2 mt-3">
-      {currentGenre && <span className="badge">Genre applied</span>}
-      {currentYear && <span className="badge">Year: {currentYear}</span>}
-      {currentRating && <span className="badge">Rating: {currentRating}+</span>}
-      {currentSort && <span className="badge">{sortLabel}</span>}
+      {currentGenre && <Text as="span" variant="secondary" className="badge">Genre applied</Text>}
+      {currentYear && <Text as="span" variant="secondary" className="badge">Year: {currentYear}</Text>}
+      {currentRating && <Text as="span" variant="secondary" className="badge">Rating: {currentRating}+</Text>}
+      {currentSort && <Text as="span" variant="secondary" className="badge">{sortLabel}</Text>}
     </div>
   );
 }

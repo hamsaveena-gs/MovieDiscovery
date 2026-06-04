@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useFavourites } from '@/features/favourites/hooks/useFavourites';
 import Button from '@/components/ui/Button';
 import NavDrawer from '@/components/nav/NavDrawer';
-import NavSearch from '@/components/nav/NavSearch';
+import SearchBar from '@/components/ui/SearchBar';
 import NavLinks from '@/components/nav/NavLinks';
 import NavHamburger from '@/components/nav/NavHamburger';
 
@@ -43,7 +43,7 @@ export default function Navbar() {
 
           {pathname !== '/search' && (
             <div className="hidden md:flex flex-1 max-w-lg">
-              <NavSearch query={query} onChange={setQuery} onSubmit={handleSearch} />
+              <SearchBar value={query} onChange={setQuery} onSubmit={handleSearch} iconButton id="nav-search" name="nav-search" placeholder="Search movies..." />
             </div>
           )}
 
@@ -61,7 +61,7 @@ export default function Navbar() {
 
         {searchOpen && pathname !== '/search' && (
           <div className="md:hidden px-4 sm:px-6 pb-4">
-            <NavSearch query={query} onChange={setQuery} onSubmit={handleSearch} autoFocus />
+            <SearchBar value={query} onChange={setQuery} onSubmit={handleSearch} iconButton id="nav-search" name="nav-search" placeholder="Search movies..." autoFocus />
           </div>
         )}
       </nav>

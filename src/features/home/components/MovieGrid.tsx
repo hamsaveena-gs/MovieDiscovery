@@ -1,4 +1,6 @@
 import MovieGrid from '@/components/ui/MovieGrid';
+import Heading from '@/components/ui/Heading';
+import Text from '@/components/ui/Text';
 import { Movie } from '@/types/movie';
 
 interface HomeMovieGridProps {
@@ -9,13 +11,13 @@ interface HomeMovieGridProps {
 export default function HomeMovieGrid({ movies, isFiltered }: HomeMovieGridProps) {
   return (
     <section>
-      <h2 className="section-heading">
+      <Heading as="h2" variant="section">
         {isFiltered ? 'Filtered Results' : 'Popular Movies'}
-      </h2>
+      </Heading>
       {movies.length > 0 ? (
         <MovieGrid movies={movies} />
       ) : (
-        <p className="text-gray-500 text-sm mt-4">No movies found for the selected filters.</p>
+        <Text variant="secondary" className="mt-4">No movies found for the selected filters.</Text>
       )}
     </section>
   );

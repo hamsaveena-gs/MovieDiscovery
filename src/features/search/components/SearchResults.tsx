@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import MovieGrid from '@/components/ui/MovieGrid';
 import Pagination from '@/components/pagination/Pagination';
 import { Movie } from '@/types/movie';
+import Text from '@/components/ui/Text';
 
 interface SearchResultsProps {
   movies: Movie[];
@@ -13,10 +14,10 @@ interface SearchResultsProps {
 export default function SearchResults({ movies, query, currentPage, totalPages }: SearchResultsProps) {
   return (
     <>
-      <p className="text-gray-500 text-sm mt-6 mb-4">
-        Found <span className="text-white font-medium">{movies.length}</span> results for{' '}
-        <span className="text-white font-medium">&ldquo;{query}&rdquo;</span>
-      </p>
+      <Text variant="secondary" className="mt-6 mb-4">
+        Found <Text variant="emphasis" as="span">{movies.length}</Text> results for{' '}
+        <Text variant="emphasis" as="span">&ldquo;{query}&rdquo;</Text>
+      </Text>
       <MovieGrid movies={movies} />
       <Suspense>
         <Pagination currentPage={currentPage} totalPages={totalPages} />

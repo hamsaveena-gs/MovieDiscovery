@@ -3,6 +3,8 @@ import { MovieDetails } from '@/types/movie';
 import { POSTER_URL } from '@/lib/tmdb';
 import FavouriteButton from '@/features/movie/components/FavouriteButton';
 import NoPoster from '@/components/ui/NoPoster';
+import Heading from '@/components/ui/Heading';
+import Text from '@/components/ui/Text';
 
 interface MovieInfoProps {
   details: MovieDetails;
@@ -11,49 +13,38 @@ interface MovieInfoProps {
 export default function MovieInfo({ details }: MovieInfoProps) {
   return (
     <div className="flex flex-col md:flex-row gap-8">
-      <div className="relative w-48 h-72 shrink-0 rounded-xl overflow-hidden shadow-2xl shadow-black/60 mx-auto md:mx-0 border border-gray-700">
+      <div className="img-poster mx-auto md:mx-0">
         {details.poster_path ? (
-          <Image
-            src={`${POSTER_URL}${details.poster_path}`}
-            alt={details.title}
-            fill
-            className="object-cover"
-          />
+          <Image src={`${POSTER_URL}${details.poster_path}`} alt={details.title} fill className="object-cover" />
         ) : (
           <NoPoster size="lg" />
         )}
       </div>
 
       <div className="flex-1">
-        <h1 className="page-title leading-tight">{details.title}</h1>
+        <Heading as="h1" variant="page" className="leading-tight">{details.title}</Heading>
         {details.tagline && (
-          <p className="text-gray-400 italic mt-1 text-sm">{details.tagline}</p>
+          <Text variant="quote" className="mt-1">{details.tagline}</Text>
         )}
 
-        <div className="flex flex-wrap gap-4 mt-4 text-sm">
-          <span className="flex items-center gap-1.5 bg-gray-800 px-3 py-1 rounded-full">
+        <div className="flex flex-wrap gap-4 mt-4">
+          <div className="flex items-center gap-1.5 bg-gray-800 px-3 py-1 rounded-full">
             <Image src="/img/favourites.png" alt="rating" width={14} height={14} />
-            <span className="text-white font-semibold">{details.vote_average.toFixed(1)}</span>
-          </span>
-          <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300">
-            {details.release_date?.slice(0, 4)}
-          </span>
-          {details.runtime && (
-            <span className="bg-gray-800 px-3 py-1 rounded-full text-gray-300">
-              {details.runtime} min
-            </span>
-          )}
+            <Text variant="emphasis" as="span">{details.vote_average.toFixed(1)}</Text>
+          </div>
+          <div className="badge">{details.release_date?.slice(0, 4)}</div>
+          {details.runtime && <div className="badge">{details.runtime} min</div>}
         </div>
 
         {details.genres && (
           <div className="flex flex-wrap gap-2 mt-4">
             {details.genres.map((genre) => (
-              <span key={genre.id} className="badge-outline">{genre.name}</span>
+              <div key={genre.id} className="badge-outline">{genre.name}</div>
             ))}
           </div>
         )}
 
-        <p className="mt-5 text-gray-300 leading-relaxed text-sm">{details.overview}</p>
+        <Text variant="body" className="mt-5">{details.overview}</Text>
 
         <div className="mt-6">
           <FavouriteButton movie={details} />

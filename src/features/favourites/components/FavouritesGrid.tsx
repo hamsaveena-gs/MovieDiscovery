@@ -1,5 +1,6 @@
 import MovieGrid from '@/components/ui/MovieGrid';
 import { Movie } from '@/types/movie';
+import Text from '@/components/ui/Text';
 
 interface FavouritesGridProps {
   movies: Movie[];
@@ -8,9 +9,9 @@ interface FavouritesGridProps {
 export default function FavouritesGrid({ movies }: FavouritesGridProps) {
   return (
     <>
-      <p className="text-gray-400 text-sm mb-6">
+      <Text variant="meta">
         {movies.length} saved movie{movies.length > 1 ? 's' : ''}
-      </p>
+      </Text>
       <MovieGrid movies={movies} />
     </>
   );

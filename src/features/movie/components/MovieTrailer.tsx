@@ -1,3 +1,5 @@
+import Heading from '@/components/ui/Heading';
+
 interface MovieTrailerProps {
   trailerKey: string;
 }
@@ -5,7 +7,7 @@ interface MovieTrailerProps {
 export default function MovieTrailer({ trailerKey }: MovieTrailerProps) {
   return (
     <section className="mt-14">
-      <h2 className="section-heading">Trailer</h2>
+      <Heading variant="section">Trailer</Heading>
       <div className="aspect-video w-full max-w-2xl rounded-xl overflow-hidden border border-gray-800 shadow-xl">
         <iframe
           src={`https://www.youtube.com/embed/${trailerKey}`}
