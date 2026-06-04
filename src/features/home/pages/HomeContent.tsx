@@ -18,13 +18,21 @@ export default async function HomeContent({ page, genre, year, rating, sort }: H
   const currentPage = Number(page) || 1;
   const isFiltered = !!(genre || year || rating || sort);
 
-  const [genresData, moviesData, trendingData] = await Promise.all([
-    getGenres(),
-    isFiltered
-      ? discoverMovies({ page: currentPage, genreId: genre, year, minRating: rating, sortBy: sort })
-      : discoverMovies({ page: currentPage }),
-    !isFiltered ? getTrendingMovies(currentPage) : Promise.resolve(null),
-  ]);
+  let genresData: { genres: { id: number; name: string }[] } = { genres: [] };
+  let moviesData: { results: Movie[]; total_pages: number } = { results: [], total_pages: 0 };
+  let trendingData: { results: Movie[] } | null = null;
+
+  try {
+    [genresData, moviesData, trendingData] = await Promise.all([
+      getGenres(),
+      isFiltered
+        ? discoverMovies({ page: currentPage, genreId: genre, year, minRating: rating, sortBy: sort })
+        : discoverMovies({ page: currentPage }),
+      !isFiltered ? getTrendingMovies(currentPage) : Promise.resolve(null),
+    ]);
+  } catch {
+    // API unavailable — render with empty data so the page still loads
+  }
 
   const movies: Movie[] = moviesData.results;
   const trending: Movie[] = trendingData?.results || [];

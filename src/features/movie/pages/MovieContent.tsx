@@ -4,21 +4,32 @@ import MovieBackdrop from '@/features/movie/components/MovieBackdrop';
 import MovieInfo from '@/features/movie/components/MovieInfo';
 import MovieTrailer from '@/features/movie/components/MovieTrailer';
 import MovieCast from '@/features/movie/components/MovieCast';
+import { notFound } from 'next/navigation';
 
 interface MovieContentProps {
   id: string;
 }
 
 export default async function MovieContent({ id }: MovieContentProps) {
-  const [movie, creditsData, videosData] = await Promise.all([
-    getMovieDetails(id),
-    getMovieCredits(id),
-    getMovieVideos(id),
-  ]);
+  let movie: MovieDetails;
+  let creditsData: { cast?: Cast[] };
+  let videosData: { results?: Video[] };
 
-  const details: MovieDetails = movie;
-  const cast: Cast[] = creditsData.cast?.slice(0, 10) || [];
-  const trailer: Video | undefined = videosData.results?.find(
+  try {
+    [movie, creditsData, videosData] = await Promise.all([
+      getMovieDetails(id),
+      getMovieCredits(id),
+      getMovieVideos(id),
+    ]);
+  } catch (err: unknown) {
+    const status = (err as { status?: number })?.status;
+    if (status === 404) notFound();
+    throw new Error('Failed to load movie details. Please try again later.');
+  }
+
+  const details: MovieDetails = movie!;
+  const cast: Cast[] = creditsData!.cast?.slice(0, 10) || [];
+  const trailer: Video | undefined = videosData!.results?.find(
     (v: Video) => v.type === 'Trailer' && v.site === 'YouTube'
   );
 

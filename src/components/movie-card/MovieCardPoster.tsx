@@ -3,7 +3,7 @@ import { Movie } from '@/types/movie';
 import { POSTER_URL } from '@/lib/tmdb';
 import NoPoster from '@/components/ui/NoPoster';
 
-export default function MovieCardPoster({ movie }: { movie: Movie }) {
+export default function MovieCardPoster({ movie, priority = false }: { movie: Movie; priority?: boolean }) {
   return (
     <div className="relative aspect-2/3 w-full">
       {movie.poster_path ? (
@@ -11,6 +11,7 @@ export default function MovieCardPoster({ movie }: { movie: Movie }) {
           src={`${POSTER_URL}${movie.poster_path}`}
           alt={movie.title}
           fill
+          priority={priority}
           className="object-cover group-hover:brightness-90 transition-all duration-300"
           sizes="(max-width: 768px) 50vw, 25vw"
         />

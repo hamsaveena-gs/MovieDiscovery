@@ -15,9 +15,13 @@ export default async function SearchContent({ query, currentPage }: SearchConten
   let totalPages = 0;
 
   if (query) {
-    const data = await searchMovies(query, currentPage);
-    movies = data.results;
-    totalPages = Math.min(data.total_pages, 500);
+    try {
+      const data = await searchMovies(query, currentPage);
+      movies = data.results;
+      totalPages = Math.min(data.total_pages, 500);
+    } catch {
+      // API unavailable — show no results
+    }
   }
 
   return (

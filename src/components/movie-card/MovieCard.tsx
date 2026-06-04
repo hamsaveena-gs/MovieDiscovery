@@ -7,13 +7,13 @@ import { useMovieCard } from '@/hooks/useMovieCard';
 import MovieCardPoster from '@/components/movie-card/MovieCardPoster';
 import MovieCardInfo from '@/components/movie-card/MovieCardInfo';
 
-export default function MovieCard({ movie }: { movie: Movie }) {
+export default function MovieCard({ movie, priority = false }: { movie: Movie; priority?: boolean }) {
   const { favourited, handleFavourite } = useMovieCard(movie);
 
   return (
     <div className="group relative rounded-xl overflow-hidden bg-gray-900 border border-gray-800 hover:border-white/50 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-white/10">
       <Link href={`/movies/${movie.id}`} className="block">
-        <MovieCardPoster movie={movie} />
+        <MovieCardPoster movie={movie} priority={priority} />
         <MovieCardInfo movie={movie} />
       </Link>
 
