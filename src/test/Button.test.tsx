@@ -32,6 +32,12 @@ describe('Button', () => {
     expect(btn.className).toContain('btn-icon-light');
   });
 
+  it('applies icon variant class', () => {
+    render(<Button variant="icon">Icon</Button>);
+    const btn = screen.getByRole('button');
+    expect(btn.className).toContain('btn-icon');
+  });
+
   it('merges custom className', () => {
     render(<Button className="custom-class">Btn</Button>);
     const btn = screen.getByRole('button');

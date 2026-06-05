@@ -6,10 +6,10 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useFavourites } from '@/features/favourites/hooks/useFavourites';
 import Button from '@/components/ui/Button';
-import NavDrawer from '@/components/nav/NavDrawer';
+import NavDrawer from '@/features/nav/components/NavDrawer';
 import SearchBar from '@/components/ui/SearchBar';
-import NavLinks from '@/components/nav/NavLinks';
-import NavHamburger from '@/components/nav/NavHamburger';
+import NavLinks from '@/features/nav/components/NavLinks';
+import NavHamburger from '@/features/nav/components/NavHamburger';
 
 export default function Navbar() {
   const pathname = usePathname();
