@@ -1,13 +1,14 @@
 import Link, { LinkProps } from 'next/link';
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'icon-light' | 'ghost';
+type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'icon-light' | 'icon' | 'ghost';
 
 const variantClass: Record<ButtonVariant, string> = {
   primary: 'btn btn-primary',
   secondary: 'btn btn-secondary',
   outline: 'btn btn-outline',
   'icon-light': 'btn-icon-light',
+  icon: 'btn-icon',
   ghost: 'btn-ghost',
 };
 

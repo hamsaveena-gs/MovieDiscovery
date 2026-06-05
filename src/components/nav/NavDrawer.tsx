@@ -22,18 +22,11 @@ export default function NavDrawer({ isOpen, onClose, navLinks }: NavDrawerProps)
   return (
     <>
       {isOpen && (
-        <div
-          className="md:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
-          onClick={onClose}
-        />
+        <div className="nav-drawer-overlay" onClick={onClose} />
       )}
 
-      <div
-        className={`md:hidden fixed top-0 right-0 h-full w-72 z-50 bg-gray-950 border-l border-gray-800 shadow-2xl transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <div className="flex items-center justify-between px-6 py-5 border-b border-gray-800">
+      <div className={`nav-drawer ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="nav-drawer-header">
           <Text as="span" variant="label" className="text-lg">Menu</Text>
           <Button variant="icon-light" onClick={onClose} className="relative w-8 h-8">
             <div className="absolute inset-0 flex items-center justify-center">
@@ -43,17 +36,13 @@ export default function NavDrawer({ isOpen, onClose, navLinks }: NavDrawerProps)
           </Button>
         </div>
 
-        <ul className="flex flex-col gap-1 p-4">
+        <ul className="nav-drawer-list">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 onClick={onClose}
-                className={`block px-4 py-4 rounded-xl text-sm font-medium transition-all ${
-                  pathname === link.href
-                    ? 'bg-white text-black'
-                    : 'text-gray-400 hover:bg-gray-800 hover:text-white'
-                }`}
+                className={`nav-drawer-link${pathname === link.href ? ' nav-drawer-link--active' : ''}`}
               >
                 {link.label}
               </Link>

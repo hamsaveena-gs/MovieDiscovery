@@ -35,21 +35,21 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800 text-white">
-        <div className="px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
-          <Link href="/" className="text-xl font-extrabold text-white tracking-tight shrink-0 hover:text-gray-300 transition-colors">
+      <nav className="nav">
+        <div className="nav-inner">
+          <Link href="/" className="nav-brand">
             MovieDiscovery
           </Link>
 
           {pathname !== '/search' && (
-            <div className="hidden md:flex flex-1 max-w-lg">
+            <div className="nav-search-wrapper">
               <SearchBar value={query} onChange={setQuery} onSubmit={handleSearch} iconButton id="nav-search" name="nav-search" placeholder="Search movies..." />
             </div>
           )}
 
           <NavLinks navLinks={navLinks} pathname={pathname} />
 
-          <div className="flex md:hidden items-center gap-3">
+          <div className="nav-actions">
             {pathname !== '/search' && (
               <Button variant="icon-light" onClick={() => setSearchOpen(!searchOpen)}>
                 <Image src="/img/magnifying-glass.png" alt="search" width={18} height={18} />
@@ -60,7 +60,7 @@ export default function Navbar() {
         </div>
 
         {searchOpen && pathname !== '/search' && (
-          <div className="md:hidden px-4 sm:px-6 pb-4">
+          <div className="nav-search-mobile">
             <SearchBar value={query} onChange={setQuery} onSubmit={handleSearch} iconButton id="nav-search" name="nav-search" placeholder="Search movies..." autoFocus />
           </div>
         )}

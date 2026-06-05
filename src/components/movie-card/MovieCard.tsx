@@ -6,6 +6,7 @@ import { Movie } from '@/types/movie';
 import { useMovieCard } from '@/hooks/useMovieCard';
 import MovieCardPoster from '@/components/movie-card/MovieCardPoster';
 import MovieCardInfo from '@/components/movie-card/MovieCardInfo';
+import Button from '@/components/ui/Button';
 
 export default function MovieCard({ movie, priority = false }: { movie: Movie; priority?: boolean }) {
   const { favourited, handleFavourite } = useMovieCard(movie);
@@ -17,9 +18,10 @@ export default function MovieCard({ movie, priority = false }: { movie: Movie; p
         <MovieCardInfo movie={movie} />
       </Link>
 
-      <button
+      <Button
+        variant="icon"
         onClick={handleFavourite}
-        className="absolute top-2 right-2 z-10 bg-black/70 rounded-full p-1.5 hover:scale-110 transition-transform backdrop-blur-sm"
+        className="absolute top-2 right-2 z-10 backdrop-blur-sm"
       >
         <Image
           src={favourited ? '/img/heart-red.png' : '/img/heart-white.png'}
@@ -27,7 +29,7 @@ export default function MovieCard({ movie, priority = false }: { movie: Movie; p
           width={18}
           height={18}
         />
-      </button>
+      </Button>
     </div>
   );
 }

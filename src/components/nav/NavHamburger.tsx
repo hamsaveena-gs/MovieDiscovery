@@ -7,10 +7,10 @@ interface NavHamburgerProps {
 
 export default function NavHamburger({ isOpen, onToggle }: NavHamburgerProps) {
   return (
-    <Button variant="icon-light" onClick={onToggle} className="flex flex-col gap-1">
-      <span className={`block w-5 h-0.5 bg-black transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
-      <span className={`block w-5 h-0.5 bg-black transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
-      <span className={`block w-5 h-0.5 bg-black transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
+    <Button variant="icon-light" onClick={onToggle} className="nav-hamburger">
+      <span className={`nav-hamburger-bar${isOpen ? ' rotate-45 translate-y-1.5' : ''}`} />
+      <span className={`nav-hamburger-bar${isOpen ? ' opacity-0' : ''}`} />
+      <span className={`nav-hamburger-bar${isOpen ? ' -rotate-45 -translate-y-1.5' : ''}`} />
     </Button>
   );
 }
