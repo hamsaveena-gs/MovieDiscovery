@@ -38,7 +38,7 @@ export default async function HomeContent({ page, genre, year, rating, sort }: H
   const trending: Movie[] = trendingData?.results || [];
   const totalPages = Math.min(moviesData.total_pages, 500);
 
-  const EXCLUDED_GENRES = new Set([10749, 27]); // Romance, Horror
+  const EXCLUDED_GENRES = new Set([10749, 27]);
   const genres = genresData.genres.filter((g) => !EXCLUDED_GENRES.has(g.id));
 
   return (
