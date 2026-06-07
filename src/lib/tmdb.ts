@@ -2,33 +2,35 @@ import { Movie, MovieDetails, Cast, Video, Genre, TMDBResponse } from '@/types/m
 
 const API_KEY = process.env.TMDB_API_KEY;
 const BASE_URL = process.env.TMDB_BASE_URL;
-export const IMAGE_URL = process.env.NEXT_PUBLIC_TMDB_IMAGE_URL;
 
-export const POSTER_URL = `${IMAGE_URL}/w500`;
-export const BACKDROP_URL = `${IMAGE_URL}/original`;
+if (!API_KEY) throw new Error('Missing env: TMDB_API_KEY');
+if (!BASE_URL) throw new Error('Missing env: TMDB_BASE_URL');
 
-async function fetchFromTMDB(endpoint: string, page: number = 1): Promise<unknown> {
+// Re-export image constants so existing server-component imports still work
+export { IMAGE_URL, POSTER_URL, BACKDROP_URL } from '@/lib/tmdb-images';
+
+async function fetchFromTMDB<T>(endpoint: string, page: number = 1): Promise<T> {
   const response = await fetch(`${BASE_URL}${endpoint}?api_key=${API_KEY}&page=${page}`);
   if (!response.ok) {
     throw new Error(`TMDB API error: ${response.status}`);
   }
-  return response.json();
+  return response.json() as Promise<T>;
 }
 
 export async function getTrendingMovies(page: number = 1): Promise<TMDBResponse<Movie>> {
-  return fetchFromTMDB('/trending/movie/week', page) as Promise<TMDBResponse<Movie>>;
+  return fetchFromTMDB<TMDBResponse<Movie>>('/trending/movie/week', page);
 }
 
 export async function getMovieDetails(id: string): Promise<MovieDetails> {
-  return fetchFromTMDB(`/movie/${id}`) as Promise<MovieDetails>;
+  return fetchFromTMDB<MovieDetails>(`/movie/${id}`);
 }
 
 export async function getMovieCredits(id: string): Promise<{ cast: Cast[] }> {
-  return fetchFromTMDB(`/movie/${id}/credits`) as Promise<{ cast: Cast[] }>;
+  return fetchFromTMDB<{ cast: Cast[] }>(`/movie/${id}/credits`);
 }
 
 export async function getMovieVideos(id: string): Promise<{ results: Video[] }> {
-  return fetchFromTMDB(`/movie/${id}/videos`) as Promise<{ results: Video[] }>;
+  return fetchFromTMDB<{ results: Video[] }>(`/movie/${id}/videos`);
 }
 
 export async function searchMovies(query: string, page: number = 1): Promise<TMDBResponse<Movie>> {
@@ -64,5 +66,5 @@ export async function discoverMovies(params: DiscoverParams = {}): Promise<TMDBR
 }
 
 export async function getGenres(): Promise<{ genres: Genre[] }> {
-  return fetchFromTMDB('/genre/movie/list') as Promise<{ genres: Genre[] }>;
+  return fetchFromTMDB<{ genres: Genre[] }>('/genre/movie/list');
 }

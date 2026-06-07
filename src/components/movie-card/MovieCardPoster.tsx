@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Movie } from '@/types/movie';
-import { POSTER_URL } from '@/lib/tmdb';
+import { POSTER_URL } from '@/lib/tmdb-images';
 import NoPoster from '@/components/ui/NoPoster';
 
 export default function MovieCardPoster({ movie, priority = false }: { movie: Movie; priority?: boolean }) {

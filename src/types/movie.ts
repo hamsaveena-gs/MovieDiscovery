@@ -52,3 +52,10 @@ export interface TMDBResponse<T> {
   total_results: number;
   page: number;
 }
+
+export interface Suggestion {
+  id: number;
+  title: string;
+  release_date: string;
+  poster_path: string | null;
+}
